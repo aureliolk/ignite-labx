@@ -1,3 +1,16 @@
 @tailwind base;
+body{
+    @apply bg-gray-900 text-gray-100;
+    -webkit-font-smoothing: antialiased
+
+}
+
 @tailwind components;
+.inset-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 @tailwind utilities;
+
