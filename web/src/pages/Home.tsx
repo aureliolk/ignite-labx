@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { LgAcosLabV2 } from "../components/logo/lg-acoslabv2"
 import { LogoReact } from "../components/logo/LogoReact"
 import { useRegisterUserMutation } from "../graphql/generated"
+import mokup from "../assets/mokup-event.png"
 
 export const Home = () => {
     const [name, setName] = useState("")
@@ -11,7 +12,9 @@ export const Home = () => {
     const navigate = useNavigate();
 
     const [registerUser,{
-        data
+        data,
+        error,
+        client
     }] = useRegisterUserMutation({
         variables:{
             name,
@@ -22,13 +25,21 @@ export const Home = () => {
     async function onSubmit(event: FormEvent) {
         event.preventDefault();
         setIsLoading(true)
-        await registerUser({
+        registerUser({
             variables: {
                 name,
                 email
             }
+        }).then(res => {
+            return navigate("/event")
+        }).catch(() => {
+            // console.log("Solicitando err:" + err )
+            console.log("Solicitando error:" + error )
+            // console.log("Solicitando errorclien:" + error?.clientErrors )
+            console.log("Solicitando errorclien:" + error?.graphQLErrors )
         })
-        return navigate("/event")
+    
+
     }
 
     return (
@@ -42,7 +53,7 @@ export const Home = () => {
                     <h1 className="text-[40px] font-normal text-gray-100 leading-tight">Construa uma <span className="text-blue-500">aplicação completa</span>, do zero, com <span className="text-blue-500">React</span></h1>
                     <p className="text-gray-200 text-base leading-relaxed font-normal">Em apenas uma semana você vai dominar na prática uma das tecnologias mais utilizadas e com alta demanda para acessar as melhores oportunidades do mercado.</p>
                 </div>
-                <div className="w-[391px] h-[320px] rounded p-8 border border-gray-500 bg-gray-700 z-10 opacity-70 group">
+                <div className="w-[391px] h-[320px] rounded p-8 border border-gray-500 bg-gray-700 z-10 opacity-70 hover:opacity-100">
                     <form className="flex flex-col gap-3 " onSubmit={onSubmit}>
                         <span className="text-2xl font-bold">Inscreva-se Gratuitamente</span>
                         <input
@@ -57,12 +68,12 @@ export const Home = () => {
                             placeholder="Digite seu email"
                             onChange={(event) => { setEmail(event.target.value) }}
                         />
-                        <button className="bg-green-500 text-white h-14 rounded font-bold text-sm mt-1 opacity-70 hover:opacity-100 z-20">{isLoading ? "Registando ... " : "GARANTIR MINHA VAGA"}</button>
+                        <button className="bg-green-500 text-white h-14 rounded font-bold text-sm mt-1 opacity-70 hover:opacity-100">{isLoading ? "Registando ... " : "GARANTIR MINHA VAGA"}</button>
                         
                     </form>
                 </div>
             </div>
-            <img src="./src/assets/mokup-event.png" alt="" />
+            <img src={mokup} alt="" />
         </div>
     )
 }

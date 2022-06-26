@@ -4,7 +4,7 @@ import { useGetLessonDataQuery } from "../graphql/generated";
 import "@vime/core/themes/default.css"
 
 type SlugDataProps = {
-    lessonSlug: string
+    lessonSlug: string | undefined
 }
 
 export const Lesson = (props: SlugDataProps) => {
@@ -23,7 +23,7 @@ export const Lesson = (props: SlugDataProps) => {
     }
 
     return (
-        <div className="flex-1">
+        <div className="flex-1 h-full">
             <div className="bg-black flex justify-center">
                 <div className="w-full h-full max-w-[1110px] max-h-[60vh] aspect-video">
                     <Player>

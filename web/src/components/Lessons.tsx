@@ -16,7 +16,7 @@ export const Lessons = () => {
                 return (
                     <div key={lesson.id}>
                         <Link to={"/event/lesson/" + lesson.slug} className="group">
-                            <div className="flex flex-col gap-2  h-full">
+                            <div className="flex flex-col gap-2 mb-2">
                                 <header className="text-base text-gray-300 ">
                                     {format(parseISO(lesson.availableAt), "eeee ' • ' dd ' de ' MMMM ' • ' k'h'mm", {
                                         locale: ptBR
