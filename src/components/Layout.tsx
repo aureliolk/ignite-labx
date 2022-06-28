@@ -1,11 +1,11 @@
 import { Footer } from "./layout/Footer"
 import { Header } from "./layout/Header"
 
-interface LayoutProps {
+export interface ChildrenProps {
     children: React.ReactNode
 }
 
-export const Layout = ({ children }: LayoutProps) => {
+export const Layout = ({ children }: ChildrenProps) => {
     return (
         <div>
             <Header />
