@@ -23,8 +23,10 @@ export const Router = () => {
 
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/event" element={<RequireAuth children={<Event />} />} />
-            <Route path="/event/lesson/:slug" element={<RequireAuth children={<Event />} />} />
+            <Route path="/event" element={<Event /> } />
+            <Route path="/event/lesson/:slug" element={<Event />} />
+            {/* <Route path="/event" element={<RequireAuth children={<Event />} />} />
+            <Route path="/event/lesson/:slug" element={<RequireAuth children={<Event />} />} /> */}
         </Routes>
     )
 }
