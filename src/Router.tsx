@@ -4,6 +4,7 @@ import { ChildrenProps } from "./components/Layout"
 import { AuthContext } from "./contexts/AuthContext"
 import { Event } from "./pages/Event"
 import { Home } from "./pages/Home"
+import Test from "./pages/Teste"
 
 
 
@@ -23,6 +24,7 @@ export const Router = () => {
 
         <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/test" element={<Test />} />
             <Route path="/event" element={<Event /> } />
             <Route path="/event/lesson/:slug" element={<Event />} />
             {/* <Route path="/event" element={<RequireAuth children={<Event />} />} />
