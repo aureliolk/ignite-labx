@@ -1,17 +1,18 @@
-import { BrowserRouter } from "react-router-dom";
+import { ApolloProvider } from "@apollo/client";
 import { Layout } from "./components/Layout";
 import { AuthProvider } from "./contexts/AuthContext";
 import { Router } from "./Router";
+import { client } from './lib/apollo'
 
 export const App = () => {
   return (
-    <AuthProvider >
-      <BrowserRouter>
+    <ApolloProvider client={client}>
+      <AuthProvider >
         <Layout>
           <Router />
         </Layout>
-      </BrowserRouter>
-    </AuthProvider>
+      </AuthProvider>
+    </ApolloProvider>
   )
 }
 

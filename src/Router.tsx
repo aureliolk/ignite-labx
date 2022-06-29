@@ -6,8 +6,6 @@ import { Event } from "./pages/Event"
 import { Home } from "./pages/Home"
 import Test from "./pages/Teste"
 
-
-
 const RequireAuth = ({ children }: ChildrenProps) => {
     const {signin} = useContext(AuthContext)
     
@@ -31,4 +29,4 @@ export const Router = () => {
             <Route path="/event/lesson/:slug" element={<RequireAuth children={<Event />} />} /> */}
         </Routes>
     )
-}
+}   
