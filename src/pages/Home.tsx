@@ -6,7 +6,7 @@ import { useGetSubscriberLazyQuery, useRegisterUserMutation } from "../graphql/g
 
 
 
-export const Home = () => {
+export default function Home (){
     const [registerOn] = useRegisterUserMutation()
     const [loginOn] = useGetSubscriberLazyQuery()
     const [name, setName] = useState("")
@@ -119,4 +119,3 @@ export const Home = () => {
         </div>
     )
 }
-

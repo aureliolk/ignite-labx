@@ -2,8 +2,8 @@ import { useContext } from "react"
 import { Route, Routes } from "react-router-dom"
 import { ChildrenProps } from "./components/Layout"
 import { AuthContext } from "./contexts/AuthContext"
-import { Event } from "./pages/Event"
-import { Home } from "./pages/Home"
+import Event from "./pages/Event"
+import  Home  from "./pages/Home"
 import Test from "./pages/Teste"
 
 const RequireAuth = ({ children }: ChildrenProps) => {
@@ -17,9 +17,8 @@ const RequireAuth = ({ children }: ChildrenProps) => {
 
 }
 
-export const Router = () => {
+export default function Router () {
     return (
-
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/test" element={<Test />} />
