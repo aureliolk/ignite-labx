@@ -3,7 +3,7 @@ import { Navigate, useParams } from "react-router-dom"
 import { Sidebar } from "../components/layout/Sidebar"
 import { Lesson } from "../components/Lesson"
 
-export default function Event(){
+export const Event = () => {
     const {slug} = useParams<{slug:string}>()
     
     if(!slug){
