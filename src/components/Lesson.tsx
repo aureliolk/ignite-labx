@@ -83,6 +83,12 @@ export const Lesson = (props: SlugDataProps) => {
                     </div>
                 </a>
             </div>
+            <div className="p-6">
+                <strong className="text-2xl font-bold leading-snug">Comentarios</strong>
+                <div className="w-full">
+
+                </div>
+            </div>
         </div>
     )
 }

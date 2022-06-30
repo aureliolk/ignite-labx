@@ -1,12 +1,14 @@
-import { useState, FormEvent } from "react"
+import { useState, FormEvent, useContext } from "react"
 import { LgAcosLabV2 } from "../components/logo/lg-acoslabv2"
 import { LogoReact } from "../components/logo/LogoReact"
 import mokup from "../assets/mokup-event.png";
 import { useGetSubscriberLazyQuery, useRegisterUserMutation } from "../graphql/generated";
+import { AuthContext } from "../contexts/AuthContext";
+import { GithubLogo } from "phosphor-react";
 
 
 
-export const Home = () =>{
+export const Home = () => {
     const [registerOn] = useRegisterUserMutation()
     const [loginOn] = useGetSubscriberLazyQuery()
     const [name, setName] = useState("")
@@ -14,7 +16,8 @@ export const Home = () =>{
     const [errMsg, setErrMsg] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const [formLogin, setFormLogin] = useState(false)
-
+    const { signInWithGithub } = useContext(AuthContext)
+    const {setUser} = useContext(AuthContext)
 
     async function LoginUser(event: FormEvent) {
         event.preventDefault()
@@ -33,6 +36,7 @@ export const Home = () =>{
             return
         } else {
             localStorage.setItem("user", JSON.stringify(res.data?.subscriber))
+            
             setIsLoading(false)
             window.location.pathname = "/event/lesson/abertura-stage-1"
             return
@@ -51,6 +55,7 @@ export const Home = () =>{
             localStorage.setItem("user", JSON.stringify(res.data?.createSubscriber))
             setIsLoading(false)
             window.location.pathname = "/event/lesson/abertura-stage-1"
+            
             return
         }).catch(err => {
             setErrMsg("Esse email ja está cadastrado")
@@ -73,7 +78,7 @@ export const Home = () =>{
                     <h1 className="text-[40px] font-normal text-gray-100 leading-tight">Construa uma <span className="text-blue-500">aplicação completa</span>, do zero, com <span className="text-blue-500">React</span></h1>
                     <p className="text-gray-200 text-base leading-relaxed font-normal">Em apenas uma semana você vai dominar na prática uma das tecnologias mais utilizadas e com alta demanda para acessar as melhores oportunidades do mercado.</p>
                 </div>
-                <div className="w-[391px] max-h-[325px] rounded p-8 border border-gray-500 bg-gray-700 z-10 opacity-70 hover:opacity-100">
+                <div className="w-[391px] max-h-[380px] rounded p-8 border border-gray-500 bg-gray-700 z-10 opacity-70 hover:opacity-100">
                     {formLogin ? (
                         <>
                             <form className="flex flex-col gap-3 " onSubmit={LoginUser}>
@@ -88,7 +93,9 @@ export const Home = () =>{
                             </form>
                             {errMsg ? (
                                 <div className="text-sm text-center mt-2 text-red-600">{errMsg}</div>
-                            ) : <button className="text-center w-full mt-2 text-sm underline hover:text-green-500" type="button" onClick={() => { setFormLogin(false) }}>Fazer cadastro</button>}
+                            ) : (
+                                <button className="text-center w-full mt-2 text-sm underline hover:text-green-500" type="button" onClick={() => { setFormLogin(false) }}>Fazer cadastro</button>
+                            )}
                         </>
                     ) : (
                         <>
@@ -107,6 +114,7 @@ export const Home = () =>{
                                     onChange={(event) => { setEmail(event.target.value) }}
                                 />
                                 <button className="bg-green-500 text-white h-14 rounded font-bold text-sm mt-1 opacity-70 hover:opacity-100">{isLoading ? "Registrando ... " : "GARANTIR MINHA VAGA"}</button>
+                                <button type="button" className="border p-2 items-center flex justify-center rounded text-sm gap-2 bg-transparent group hover:bg-white hover:text-gray-900" onClick={()=>{signInWithGithub()}}><GithubLogo size={24} />Login com GitHub</button>
                             </form>
                             {errMsg ? (
                                 <div className="text-sm text-center mt-2 text-red-600">{errMsg}</div>
