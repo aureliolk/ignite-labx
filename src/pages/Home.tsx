@@ -123,7 +123,7 @@ export const Home = () => {
                     )}
                 </div>
             </div>
-            <img className="mb-8 lg:mt-0" src={mokup} alt="Imagem de um cumputador sem link" />
+            <div className="w-full p-2 lg:p-0"><img src={mokup} alt="Imagem de um cumputador sem link" /></div>
         </div>
     )
 }
