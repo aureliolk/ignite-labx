@@ -128,7 +128,7 @@ export const Lesson = (props: SlugDataProps) => {
                         return (
                             <div key={comment.id} className="flex items-center gap-2 p-2">
                                 <div className="inline-block">
-                                    {comment.authorAvatar ? <img src={comment.authorAvatar} alt={`Imagem de ${comment.autor}`} /> : <UserCircle size={35} />}
+                                    {comment.authorAvatar ? <img className="w-[35px] h-[35px] rounded-full" src={comment.authorAvatar} alt={`Imagem de ${comment.autor}`} /> : <UserCircle size={35} />}
                                 </div>
                                 <div>
                                     <div className="flex text-xs items-center gap-2"><strong className="text-sm text-gray-50">{comment.autor}</strong> <span> {formatDistanceToNowStrict(
