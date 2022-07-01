@@ -45,17 +45,31 @@ export const Lesson = (props: SlugDataProps) => {
 
     async function sendComment() {
         setIsloading(true)
-        createComment({
-            variables: {
-                slug: props.lessonSlug,
-                avatar: user?.user_metadata?.avatar_url,
-                user: user?.name || user?.user_metadata?.name,
-                comment
-            }
-        }).then(() => {
-            setIsloading(false)
-            refetch({ slug: props.lessonSlug })
-        })
+        if(!user?.name){
+            createComment({
+                variables: {
+                    slug: props.lessonSlug,
+                    avatar: user?.user_metadata?.avatar_url,
+                    user: user?.user_metadata?.name,
+                    comment
+                }
+            }).then(() => {
+                setIsloading(false)
+                refetch({ slug: props.lessonSlug })
+            })
+        }else{
+            createComment({
+                variables: {
+                    slug: props.lessonSlug,
+                    avatar: user?.user_metadata?.avatar_url,
+                    user: user?.name,
+                    comment
+                }
+            }).then(() => {
+                setIsloading(false)
+                refetch({ slug: props.lessonSlug })
+            })
+        }
     }
 
     if (!data || !data.lesson) {
