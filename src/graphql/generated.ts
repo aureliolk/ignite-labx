@@ -1501,6 +1501,7 @@ export type FeedbackUpdateManyInlineInput = {
 };
 
 export type FeedbackUpdateManyInput = {
+  authorAvatar?: InputMaybe<Scalars['String']>;
   authorComment?: InputMaybe<Scalars['String']>;
   autor?: InputMaybe<Scalars['String']>;
 };
@@ -1690,7 +1691,6 @@ export type FeedbackWhereInput = {
 
 /** References Feedback record uniquely */
 export type FeedbackWhereUniqueInput = {
-  authorAvatar?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
 };
 
