@@ -1,10 +1,9 @@
 import { useContext } from "react"
-import { Navigate, Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import { ChildrenProps } from "./components/Layout"
 import { AuthContext } from "./contexts/AuthContext"
 import {Event} from "./pages/Event"
 import  {Home}  from "./pages/Home"
-
 
 const Auth = ({ children }: ChildrenProps)=>{
     const {signin} = useContext(AuthContext)
@@ -15,8 +14,6 @@ const RequireAuth = ({ children }: ChildrenProps) => {
     const {signin} = useContext(AuthContext)
     return <>{signin ? children : <Home />}</>
 }
-
-
 
 export const Router = ()=> {
     return (

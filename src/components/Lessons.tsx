@@ -1,4 +1,4 @@
-import { CaretLeft, CheckCircle, Lock } from "phosphor-react"
+import { CaretLeft, CaretRight, CheckCircle, FileArrowDown, Lock, Spinner } from "phosphor-react"
 import { isPast, format, parseISO } from 'date-fns'
 import ptBR from "date-fns/locale/pt-BR"
 import { Link, useParams } from "react-router-dom"
@@ -9,6 +9,10 @@ import { useGetLessonsQuery } from "../graphql/generated"
 export const Lessons = () => {
     const { slug } = useParams<{ slug: string }>()
     const { data } = useGetLessonsQuery()
+
+    if(!data){
+        return <div className="w-full h-full flex items-center justify-center"><Spinner size={32} className="animate-spin" /></div>
+    }
 
     return (
         <>
@@ -22,10 +26,10 @@ export const Lessons = () => {
                                         locale: ptBR
                                     })}
                                 </header>
-                                <main className={classNames("relative border border-gray-500 p-4 rounded flex flex-col gap-4 group-hover:border group-hover:border-green-500", { "bg-green-500": lesson.slug === slug })}>
+                                <main className={classNames("relative border border-gray-500 p-4 rounded flex flex-col gap-2 h-28 group-hover:border group-hover:border-green-500", { "bg-green-500": lesson.slug === slug })}>
                                     <div className="flex items-center justify-between ">
                                         {isPast(parseISO(lesson.availableAt)) ? (
-                                            <span className={classNames("text-blue-500 flex items-center gap-1 text-base font-medium", { "text-gray-100": lesson.slug === slug })}>
+                                            <span className={classNames("text-blue-500 flex items-center gap-1 text-sm font-medium", { "text-gray-100": lesson.slug === slug })}>
                                                 <CheckCircle size={20} /> Conteúdo liberado
                                             </span>
                                         ) : (
@@ -41,7 +45,7 @@ export const Lessons = () => {
                                             )}
                                         </span>
                                     </div>
-                                    <strong className="text-gray-200 text-base">{lesson.title}</strong>
+                                    <strong className="text-gray-100 text-sm">{lesson.title}</strong>
                                     {lesson.slug === slug && <CaretLeft className="text-green-500 absolute inset-center left-[-2px]" weight="fill" />}
                                 </main>
                             </div>
@@ -49,6 +53,7 @@ export const Lessons = () => {
                     </div>
                 )
             })}
+             
         </>
     )
 }

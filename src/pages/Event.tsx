@@ -7,7 +7,7 @@ export const Event = () => {
     const {slug} = useParams<{slug:string}>()
     
     if(!slug){
-        return Navigate({to:"/event/lesson/abertura-stage-1"})
+        return Navigate({to:"/event/lesson/comecando-no-reactjs-em-2022"})
     }
     
     return (

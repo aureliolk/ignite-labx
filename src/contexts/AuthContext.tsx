@@ -27,8 +27,6 @@ export const AuthContext = createContext({} as AuthContextProps)
 export const AuthProvider = ({ children }: ChildrenProps) => {
     const [user, setUser] = useState<UserProps | null>(JSON.parse(localStorage.getItem("user") as string))
     const signin = !!user
-    
-    console.log(user)
 
     useEffect(() => {
         /* when the app loads, check to see if the user is signed in */
@@ -53,11 +51,6 @@ export const AuthProvider = ({ children }: ChildrenProps) => {
         });
         
       }
-    //   async function signOut() {
-    //     /* sign the user out */
-    //     await supabase.auth.signOut();
-    //     setUser(null);
-    //   }
 
     async function SignOut() {
         localStorage.removeItem("user")

@@ -9,7 +9,7 @@ module.exports = {
     },
     extend: {
       backgroundImage:{
-        "blur":"url('./src/assets/blur-event.png')"
+        "blur":"url('/src/assets/blur-event.png')"
       },
       colors:{
         green: {

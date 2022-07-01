@@ -1,0 +1,7 @@
+mutation CreatComment($user: String, $comment: String, $slug: String, $avatar: String) {
+  createFeedback(
+    data: {autor: $user, authorComment: $comment, authorAvatar: $avatar, lesson: {connect: {slug: $slug}}}
+  ) {
+    id
+  }
+}

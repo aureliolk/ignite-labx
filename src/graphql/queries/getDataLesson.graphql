@@ -1,12 +1,19 @@
-query GetLessonData ($slug: String) {
-    lesson(where: {slug: $slug}) {
-      title
-      videoId
-      description
-      teacher {
-        name
-        bio
-        avatarURL
-      }
+query GetLessonData($slug: String) {
+  lesson(where: {slug: $slug}) {
+    title
+    videoId
+    description
+    teacher {
+      name
+      bio
+      avatarURL
     }
   }
+  feedbacks(where: {lesson: {slug: $slug}}, orderBy: createdAt_DESC) {
+    authorAvatar
+    authorComment
+    autor
+    id
+    createdAt
+  }
+}
