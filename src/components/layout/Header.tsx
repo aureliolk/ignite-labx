@@ -10,7 +10,7 @@ export const Header = () =>{
     return(
         <>
         {!signin ? (
-            <header className="bg-gray-700 flex items-center justify-center py-4 border-b border-gray-600 w-full">
+            <header className="bg-gray-700 flex items-center justify-center py-4 border-b border-gray-600 w-full ">
             <a href="/event"> <LgAcosLabV2 /></a>
          </header>
         ):(

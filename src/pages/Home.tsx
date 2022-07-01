@@ -38,7 +38,7 @@ export const Home = () => {
             localStorage.setItem("user", JSON.stringify(res.data?.subscriber))
             
             setIsLoading(false)
-            window.location.pathname = "/event/lesson/abertura-stage-1"
+            window.location.pathname = "/event/lesson/comecando-no-reactjs-em-2022"
             return
         }
     }
@@ -54,7 +54,7 @@ export const Home = () => {
         }).then(res => {
             localStorage.setItem("user", JSON.stringify(res.data?.createSubscriber))
             setIsLoading(false)
-            window.location.pathname = "/event/lesson/abertura-stage-1"
+            window.location.pathname = "/event/lesson/comecando-no-reactjs-em-2022"
             
             return
         }).catch(err => {
@@ -68,17 +68,17 @@ export const Home = () => {
     }
 
     return (
-        <div className="flex flex-col relative h-full p-20 w-full bg-blur bg-cover bg-no-repeat">
-            <div className="absolute inset-center top-72">
+        <div className="flex flex-col items-center relative h-full lg:p-20 w-full bg-blur bg-cover bg-no-repeat">
+            <div className="absolute inset-center w-full top-52 lg:top-72">
                 <LogoReact />
             </div>
-            <div className="flex justify-between gap-8">
-                <div className="w-[624px] flex flex-col gap-4">
-                    <span className="w-52"><LgAcosLabV2 /></span>
-                    <h1 className="text-[40px] font-normal text-gray-100 leading-tight">Construa uma <span className="text-blue-500">aplicação completa</span>, do zero, com <span className="text-blue-500">React</span></h1>
-                    <p className="text-gray-200 text-base leading-relaxed font-normal">Em apenas uma semana você vai dominar na prática uma das tecnologias mais utilizadas e com alta demanda para acessar as melhores oportunidades do mercado.</p>
+            <div className="flex flex-col items-center w-full lg:flex-row lg:justify-between lg:gap-8 lg:items-start">
+                <div className="flex flex-col gap-4 items-center py-10 lg:items-start lg:w-[624px] lg:p-0">
+                    <span className="hidden lg:w-52 lg:block"><LgAcosLabV2 /></span>
+                    <h1 className="text-gray-100 font-normal leading-tight text-3xl w-80 text-center lg:text-[40px] lg:w-full lg:text-start">Construa uma <span className="text-blue-500">aplicação completa</span>, do zero, com <span className="text-blue-500">React</span></h1>
+                    <p className="text-gray-200 text-base leading-relaxed font-normal w-80 text-center lg:w-full lg:text-start">Em apenas uma semana você vai dominar na prática uma das tecnologias mais utilizadas e com alta demanda para acessar as melhores oportunidades do mercado.</p>
                 </div>
-                <div className="w-[391px] max-h-[380px] rounded p-8 border border-gray-500 bg-gray-700 z-10 opacity-70 hover:opacity-100">
+                <div className="w-full lg:w-[391px] max-h-[380px] rounded p-8 border border-gray-500 bg-gray-700 z-10 opacity-70 hover:opacity-100">
                     {formLogin ? (
                         <>
                             <form className="flex flex-col gap-3 " onSubmit={LoginUser}>
@@ -123,7 +123,7 @@ export const Home = () => {
                     )}
                 </div>
             </div>
-            <img src={mokup} alt="" />
+            <img className="mb-8 lg:mt-0" src={mokup} alt="Imagem de um cumputador sem link" />
         </div>
     )
 }

@@ -126,12 +126,12 @@ export const Lesson = (props: SlugDataProps) => {
                 <div className="w-full  max-h-[473px] overflow-y-scroll scrollbar scrollbar-thumb-green-500">
                     {data.feedbacks?.map(comment => {
                         return (
-                            <div key={comment.id} className="flex items-center gap-2 p-2">
+                            <div key={comment.id} className="flex items-center gap-2 mt-4">
                                 <div className="inline-block">
                                     {comment.authorAvatar ? <img className="w-[35px] h-[35px] rounded-full" src={comment.authorAvatar} alt={`Imagem de ${comment.autor}`} /> : <UserCircle size={35} />}
                                 </div>
                                 <div>
-                                    <div className="flex text-xs items-center gap-2"><strong className="text-sm text-gray-50">{comment.autor}</strong> <span> {formatDistanceToNowStrict(
+                                    <div className="flex text-xs items-center gap-2"><strong className="text-sm text-gray-50">{comment.autor}</strong> <span>há {formatDistanceToNowStrict(
                                         new Date( year(comment.createdAt), month(comment.createdAt)-1, day(comment.createdAt),  hour(comment.createdAt), min(comment.createdAt), sec(comment.createdAt)),{
                                         locale:ptBR,
                                         addSuffix:false
