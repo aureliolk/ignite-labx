@@ -1,36 +1,22 @@
-import { FileArrowDown, CaretRight } from "phosphor-react"
+import classNames from "classnames"
+import { useContext } from "react"
+import { AuthContext } from "../../contexts/AuthContext"
+
 import { Lessons } from "../Lessons"
+import { Material } from "../Material"
 
-export const Sidebar = () =>{
+export const Sidebar = () => {
+    const { menu } = useContext(AuthContext)
 
-    return(
-        <div className="w-[360px] py-2 px-4 bg-gray-700 border-l border-gray-500 flex flex-col gap-4 ">
-            <span className="block py-4 text-2xl font-bold border-b border-gray-500 mb-2">
-                Cronogramas das aulas 
-            </span> 
-            <div className="max-h-[1030px] overflow-y-scroll scrollbar scrollbar-thumb-green-500 p-4">
+    return (
+        <div className={classNames({ "w-[360px] py-2 px-4 bg-gray-700 flex-col  hidden lg:flex  ": menu === false }, { "w-full h-screen bg-gray-700  flex-col gap-4 flex fixed z-50 pb-24": menu === true })}>
+            <span className="block py-4 text-2xl font-bold bg-gray-500 text-center lg:text-start lg:border-0 lg:border-b lg:border-gray-500 lg:bg-transparent">
+                Cronogramas das aulas
+            </span>
+            <div className="max-h-screen lg:max-h-[1030px] overflow-y-scroll scrollbar scrollbar-thumb-green-500  py:4 px-8 lg:p-4  flex flex-col gap-4">
                 <Lessons />
             </div>
-            <div className="flex flex-col gap-4">
-                <a href="#" className="flex items-center gap-4 group hover:bg-gray-600 bg-gray-700 ">
-                    <div className="flex flex-col flex-1 p-2">
-                        <span className="font-bold text-base text-gray-200">Material Complementar</span>
-                        <span className="text-xs text-gray-300">Acesse o material complementar para acelerar o seu desenvolvimento</span>
-                    </div>
-                    <div className="bg-green-500 w-12 flex items-center justify-center h-full">
-                        <FileArrowDown size={24} />
-                    </div>
-                </a>
-                <a href="#" className="flex items-center gap-4 group hover:bg-gray-600 bg-gray-700">
-                    <div className="flex flex-col flex-1 p-2">
-                        <span className="font-bold text-base text-gray-200">Wallpapers exclusivos</span>
-                        <span className="text-xs text-gray-300">Baixe wallpapers exclusivos do Ignite Lab e personalize a sua máquina</span>
-                    </div>
-                    <div className="bg-green-500 w-12 flex items-center justify-center h-full">
-                        <FileArrowDown size={24} />
-                    </div>
-                </a>
-            </div>
+            <div className="hidden lg:block"><Material /></div>
         </div>
     )
 }

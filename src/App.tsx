@@ -1,6 +1,6 @@
 import { ApolloProvider } from "@apollo/client";
 import { AuthProvider } from "./contexts/AuthContext";
-import  {Router} from "./Router";
+import  {Routerx} from "./Router";
 import { client } from './lib/apollo'
 import { Layout } from "./components/Layout";
 
@@ -9,7 +9,7 @@ export const App = () => {
     <ApolloProvider client={client}>
       <AuthProvider >
           <Layout>
-            <Router />
+             <Routerx />
           </Layout>
       </AuthProvider>
     </ApolloProvider>

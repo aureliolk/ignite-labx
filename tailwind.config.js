@@ -6,6 +6,9 @@ module.exports = {
   theme: {
     fontFamily: {
       'sans': 'Roboto,sans-serif',
+      'neonx': 'Neon Zone, sans-serif',
+      'neon': 'NeonZone, sans-serif'
+
     },
     extend: {
       backgroundImage:{

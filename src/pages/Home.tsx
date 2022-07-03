@@ -17,7 +17,6 @@ export const Home = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [formLogin, setFormLogin] = useState(false)
     const { signInWithGithub } = useContext(AuthContext)
-    const {setUser} = useContext(AuthContext)
 
     async function LoginUser(event: FormEvent) {
         event.preventDefault()
@@ -73,10 +72,10 @@ export const Home = () => {
                 <LogoReact />
             </div>
             <div className="flex flex-col items-center w-full lg:flex-row lg:justify-between lg:gap-8 lg:items-start">
-                <div className="flex flex-col gap-4 items-center py-10 lg:items-start lg:w-[624px] lg:p-0">
+                <div className=" flex flex-col gap-4 items-center py-10 lg:items-start lg:w-[624px] lg:p-0">
                     <span className="hidden lg:w-52 lg:block"><LgAcosLabV2 /></span>
                     <h1 className="text-gray-100 font-normal leading-tight text-3xl w-80 text-center lg:text-[40px] lg:w-full lg:text-start">Construa uma <span className="text-blue-500">aplicação completa</span>, do zero, com <span className="text-blue-500">React</span></h1>
-                    <p className="text-gray-200 text-base leading-relaxed font-normal w-80 text-center lg:w-full lg:text-start">Em apenas uma semana você vai dominar na prática uma das tecnologias mais utilizadas e com alta demanda para acessar as melhores oportunidades do mercado.</p>
+                    <p className=" text-gray-200 text-base leading-relaxed font-normal w-80 text-center lg:w-full lg:text-start">Em apenas uma semana você vai dominar na prática uma das tecnologias mais utilizadas e com alta demanda para acessar as melhores oportunidades do mercado.</p>
                 </div>
                 <div className="w-full lg:w-[391px] max-h-[380px] rounded p-8 border border-gray-500 bg-gray-700 z-10 opacity-70 hover:opacity-100">
                     {formLogin ? (
@@ -123,7 +122,7 @@ export const Home = () => {
                     )}
                 </div>
             </div>
-            <div className="w-full p-2 lg:p-0"><img src={mokup} alt="Imagem de um cumputador sem link" /></div>
+            <img className="mb-8 lg:mt-0" src={mokup} alt="Imagem de um cumputador sem link" />
         </div>
     )
 }

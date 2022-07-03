@@ -1,10 +1,8 @@
-export const LgAcosv4=()=> {
-  return (
-    <svg
+<svg
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       viewBox="0 0 314.709 45.946"
-      className="fill-white w-48 h-6 hover:fill-green-500 transition-all font-neon"
+      className="fill-white w-48 h-6 hover:fill-green-500 transition-all"
     >
       <g transform="translate(-2.744 -106.054)">
         <g >
@@ -33,5 +31,3 @@ export const LgAcosv4=()=> {
         </g>
       </g>
     </svg>
-  );
-}
