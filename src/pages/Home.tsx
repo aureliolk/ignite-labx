@@ -35,7 +35,7 @@ export const Home = () => {
             return
         } else {
             localStorage.setItem("user", JSON.stringify(res.data?.subscriber))
-            
+
             setIsLoading(false)
             window.location.pathname = "/event/lesson/comecando-no-reactjs-em-2022"
             return
@@ -54,7 +54,7 @@ export const Home = () => {
             localStorage.setItem("user", JSON.stringify(res.data?.createSubscriber))
             setIsLoading(false)
             window.location.pathname = "/event/lesson/comecando-no-reactjs-em-2022"
-            
+
             return
         }).catch(err => {
             setErrMsg("Esse email ja está cadastrado")
@@ -113,7 +113,7 @@ export const Home = () => {
                                     onChange={(event) => { setEmail(event.target.value) }}
                                 />
                                 <button className="bg-green-500 text-white h-14 rounded font-bold text-sm mt-1 opacity-70 hover:opacity-100">{isLoading ? "Registrando ... " : "GARANTIR MINHA VAGA"}</button>
-                                <button type="button" className="border p-2 items-center flex justify-center rounded text-sm gap-2 bg-transparent group hover:bg-white hover:text-gray-900" onClick={()=>{signInWithGithub()}}><GithubLogo size={24} />Login com GitHub</button>
+                                <button type="button" className="border p-2 items-center flex justify-center rounded text-sm gap-2 bg-transparent group hover:bg-white hover:text-gray-900" onClick={() => { signInWithGithub() }}><GithubLogo size={24} />Login com GitHub</button>
                             </form>
                             {errMsg ? (
                                 <div className="text-sm text-center mt-2 text-red-600">{errMsg}</div>

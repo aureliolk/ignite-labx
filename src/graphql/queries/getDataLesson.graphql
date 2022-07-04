@@ -15,5 +15,6 @@ query GetLessonData($slug: String) {
     autor
     id
     createdAt
+    updatedAt
   }
 }
