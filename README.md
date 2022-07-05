@@ -21,7 +21,7 @@
 Ignite lab é um evento realizado pela [Rocketseat](http://rocketseat.com.br/) em que criamos uma plataforma de eventos do absoluto zero, onde o usuário pode se registrar para assistir as aulas.
 
 
-A ideia do para esse projeto é disponibilizar uma plataforma de conteúdos em video, com captura de dados do usuario, que pode ser utilizado como uma aplicação para eventos online.
+A ideia para esse projeto é disponibilizar uma plataforma de conteúdos em video, com captura de dados do usuario,para que possar ser utilizado como uma aplicação para eventos online.
 
 **Colabore com o projeto, Comentarios, Sugestões, Report de Bug, Melhorias para o projeto.❤️**
 
@@ -62,7 +62,7 @@ A ideia do para esse projeto é disponibilizar uma plataforma de conteúdos em v
 ---
 
 
-<p align="center">Minha redes sociais !</p>
+<p align="center">Minhas redes sociais !</p>
 <p align="center" >
 <a href="https://www.linkedin.com/in/aureliolk/">
     <img src="https://acos-labx.vercel.app/developerLikedinAureliolk.svg" />
