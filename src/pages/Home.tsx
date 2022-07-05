@@ -45,25 +45,41 @@ export const Home = () => {
     async function onRegister(event: FormEvent) {
         event.preventDefault()
         setIsLoading(true)
-        registerOn({
-            variables: {
-                email,
-                name
-            }
-        }).then(res => {
-            localStorage.setItem("user", JSON.stringify(res.data?.createSubscriber))
-            setIsLoading(false)
-            window.location.pathname = "/event/lesson/comecando-no-reactjs-em-2022"
-
-            return
-        }).catch(err => {
-            setErrMsg("Esse email ja está cadastrado")
+        if(name.length === 0 ){
+            setErrMsg("O campo nome não pode esta vazio!")
             setTimeout(() => {
                 setErrMsg("")
             }, 3000);
             setIsLoading(false)
             return
-        })
+        }else if(email.length === 0){
+            setErrMsg("O campo email não pode esta vazio!")
+            setTimeout(() => {
+                setErrMsg("")
+            }, 3000);
+            setIsLoading(false)
+            return
+        }else{
+            registerOn({
+                variables: {
+                    email,
+                    name
+                }
+            }).then(res => {
+                localStorage.setItem("user", JSON.stringify(res.data?.createSubscriber))
+                setIsLoading(false)
+                window.location.pathname = "/event/lesson/comecando-no-reactjs-em-2022"
+    
+                return
+            }).catch(err => {
+                setErrMsg("Esse email ja está cadastrado")
+                setTimeout(() => {
+                    setErrMsg("")
+                }, 3000);
+                setIsLoading(false)
+                return
+            })
+        }
     }
     
 
