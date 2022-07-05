@@ -1,29 +1,38 @@
 <div align="center">
     <img src=".github/ignitelab-preview.png" height="512px"/>         
 </div>
+
     
-<p align="center">   
-  <img alt="Image da Home do Projeto Acos Lab" src="https://img.shields.io/badge/made%20by-aleksanderpalamar-%237519C1?style=flat-square" >  
-</p>
+<a href="https://acos-services.vercel.app">   
+  <p align="center">
+  <img alt="Image da Home do Projeto Acos Lab" src="https://acos-labx.vercel.app/developedGitAureliolk.svg">
+  </p>
+</a>
+
 <p align="center">
   <a href="#sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#como-executar">Como Executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
 </p>
 
+
 ## Sobre
 
-O projeto é uma plataforma de conteúdos em video, que pode ser utilizado como uma aplicação para eventos online.
+Ignite lab é um evento realizado pela [Rocketseat](http://rocketseat.com.br/) em que criamos uma plataforma de eventos do absoluto zero, onde o usuário pode se registrar para assistir as aulas.
 
-**Colabore com o projeto, comente, sugestões, reporte bugs, ajude a melhorar o projeto.❤️**
+
+A ideia do para esse projeto é disponibilizar uma plataforma de conteúdos em video, com captura de dados do usuario, que pode ser utilizado como uma aplicação para eventos online.
+
+**Colabore com o projeto, Comentarios, Sugestões, Report de Bug, Melhorias para o projeto.❤️**
 
 ## Tecnologias
 
 - [Typescript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
-- [Chakra-ui](https://chakra-ui.com/)
-- [Apollo Client](https://www.apollographql.com/)
+- [Tailwindcss](https://tailwindcss.com/)
 - [GraphQL](https://graphql.org/)
+- [GraphCms](https://graphcms.com/)
+- [Apollo Client](https://www.apollographql.com/)
 
 ## Como Executar
 
@@ -51,4 +60,12 @@ O projeto é uma plataforma de conteúdos em video, que pode ser utilizado como 
 ```
 
 ---
-<sup>Projeto desenvolvido por [Aleksander Palamar](https://github.com/aleksanderpalamar), da [Portfólio](https://www.palamarsolutionit.com.br/).</sup>
+
+Minha redes sociais !
+
+<a href="#">
+    <img src="https://acos-labx.vercel.app/developerLikedinAureliolk.svg" />
+</a>
+<a href="#">
+    <img src="https://acos-labx.vercel.app/developerInstagramAureliolk.svg" />
+</a>
