@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="172"
-   height="20"
+   width="188.45454"
+   height="20.009418"
    role="img"
    aria-label="made by: aleksanderpalamar"
    version="1.1"
@@ -28,8 +28,8 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="3.0738052"
-     inkscape:cx="95.97225"
-     inkscape:cy="11.386538"
+     inkscape:cx="112.56406"
+     inkscape:cy="11.061209"
      inkscape:window-width="1366"
      inkscape:window-height="719"
      inkscape:window-x="0"
@@ -40,45 +40,46 @@
      id="title111">Developed By:</title>
   <g
      shape-rendering="crispEdges"
-     id="g117">
+     id="g117"
+     transform="matrix(1.0980003,0,0,1,-51.183349,-45.87669)">
     <rect
-       width="74.474518"
+       width="88.450516"
        height="20"
        fill="#555555"
        id="rect113"
-       x="0"
-       y="0"
-       style="stroke-width:1.14305" />
+       x="46.615059"
+       y="45.87669"
+       style="stroke-width:1.24569" />
     <rect
-       x="74.132477"
-       width="97.867523"
+       x="135.59682"
+       width="82.652565"
        height="20"
        fill="#7519c1"
        id="rect115"
-       style="fill:#00875f;fill-opacity:1;stroke-width:0.922508"
-       y="0" />
+       style="fill:#00875f;fill-opacity:1;stroke-width:0.847774"
+       y="45.886108" />
   </g>
   <text
      xml:space="preserve"
-     style="font-size:8px;font-family:'Neon Zone';-inkscape-font-specification:'Neon Zone';fill:#ffffff;fill-opacity:1"
-     x="2.5221882"
-     y="12.20717"
+     style="font-size:10.6667px;font-family:'Neon Zone';-inkscape-font-specification:'Neon Zone';fill:#ffffff;fill-opacity:1"
+     x="3.3590906"
+     y="12.689144"
      id="text2858"><tspan
        sodipodi:role="line"
        id="tspan2856"
-       x="2.5221882"
-       y="12.20717"
-       style="font-size:8px;fill:#ffffff;fill-opacity:1">devebloped by: </tspan></text>
+       x="3.3590906"
+       y="12.689144"
+       style="font-size:10.6667px;fill:#ffffff;fill-opacity:1">devebloped by: </tspan></text>
   <text
      xml:space="preserve"
      style="font-size:16px;font-family:'Neon Zone';-inkscape-font-specification:'Neon Zone';fill:#ffffff;fill-opacity:1"
-     x="81.80687"
-     y="14.891501"
+     x="102.83146"
+     y="14.530953"
      id="text2858-3"><tspan
        sodipodi:role="line"
        id="tspan2856-6"
-       x="81.80687"
-       y="14.891501"
+       x="102.83146"
+       y="14.530953"
        style="font-size:16px;fill:#ffffff;fill-opacity:1">aureliolk</tspan></text>
   <metadata
      id="metadata3073">
