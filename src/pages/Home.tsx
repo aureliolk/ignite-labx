@@ -2,6 +2,7 @@ import { useState, FormEvent, useContext } from "react"
 import { LgAcosLabV2 } from "../components/logo/lg-acoslabv2"
 import { LogoReact } from "../components/logo/LogoReact"
 import mokup from "../assets/mokup-event.png";
+import technology from "../assets/technologyUtilits.png"
 import { useGetSubscribeEmailLazyQuery, useCreateSubscribeMutation } from "../graphql/generated";
 import { AuthContext } from "../contexts/AuthContext";
 import { GithubLogo } from "phosphor-react";
@@ -77,6 +78,7 @@ export const Home = () => {
                     <span className="hidden lg:w-52 lg:block"><LgAcosLabV2 /></span>
                     <h1 className="text-gray-100 font-normal leading-tight text-3xl w-80 text-center lg:text-[40px] lg:w-full lg:text-start">Construa uma <span className="text-blue-500">aplicação completa</span>, do zero, com <span className="text-blue-500">React</span></h1>
                     <p className=" text-gray-200 text-base leading-relaxed font-normal w-80 text-center lg:w-full lg:text-start">Em apenas uma semana você vai dominar na prática uma das tecnologias mais utilizadas e com alta demanda para acessar as melhores oportunidades do mercado.</p>
+                    <img className="w-80 mt-2" src={technology} alt="Images da Tecnologias" />
                 </div>
                 <div className="w-full lg:w-[391px] max-h-[380px] rounded p-8 border border-gray-500 bg-gray-700 z-10 opacity-70 hover:opacity-100">
                     {formLogin ? (

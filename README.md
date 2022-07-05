@@ -27,8 +27,8 @@ A ideia do para esse projeto é disponibilizar uma plataforma de conteúdos em v
 
 ## Tecnologias
 
-- [Typescript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
+- [Typescript](https://www.typescriptlang.org/)
 - [Tailwindcss](https://tailwindcss.com/)
 - [GraphQL](https://graphql.org/)
 - [GraphCms](https://graphcms.com/)
@@ -61,11 +61,12 @@ A ideia do para esse projeto é disponibilizar uma plataforma de conteúdos em v
 
 ---
 
-Minha redes sociais !
 
+<p align="center">Minha redes sociais !</p>
+<p align="center" >
 <a href="#">
     <img src="https://acos-labx.vercel.app/developerLikedinAureliolk.svg" />
 </a>
 <a href="#">
     <img src="https://acos-labx.vercel.app/developerInstagramAureliolk.svg" />
-</a>
+</a></p>
