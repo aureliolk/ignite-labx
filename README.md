@@ -1,5 +1,6 @@
 <div align="center">
     <img src="https://acos-labx.vercel.app/homeAcosLab.png" height="512px"/>         
+    <img src="https://acos-labx.vercel.app/eventoAcosLab.png" height="512px"/>         
 </div>
 
     
