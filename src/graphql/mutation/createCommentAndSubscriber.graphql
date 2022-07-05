@@ -1,0 +1,19 @@
+mutation createCommentAndSubscriber($comment: String, $slug: String, $name: String!, $email: String!, $avatar: String) {
+  createFeedback(
+    data: {
+      feedbacks: $comment, 
+      lesson:{
+        connect:{
+          slug: $slug}}, 
+      subscriber: {
+        create: {
+          name: $name,
+          email: $email,
+          avatar: $avatar},
+        connect: {email: $email}
+      }
+    }
+  ) {
+    id
+  }
+}

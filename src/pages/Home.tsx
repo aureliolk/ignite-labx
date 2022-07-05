@@ -2,15 +2,15 @@ import { useState, FormEvent, useContext } from "react"
 import { LgAcosLabV2 } from "../components/logo/lg-acoslabv2"
 import { LogoReact } from "../components/logo/LogoReact"
 import mokup from "../assets/mokup-event.png";
-import { useGetSubscriberLazyQuery, useRegisterUserMutation } from "../graphql/generated";
+import { useGetSubscribeEmailLazyQuery, useCreateSubscribeMutation } from "../graphql/generated";
 import { AuthContext } from "../contexts/AuthContext";
 import { GithubLogo } from "phosphor-react";
 
 
 
 export const Home = () => {
-    const [registerOn] = useRegisterUserMutation()
-    const [loginOn] = useGetSubscriberLazyQuery()
+    const [registerOn] = useCreateSubscribeMutation()
+    const [loginOn] = useGetSubscribeEmailLazyQuery()
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [errMsg, setErrMsg] = useState("")
@@ -35,7 +35,6 @@ export const Home = () => {
             return
         } else {
             localStorage.setItem("user", JSON.stringify(res.data?.subscriber))
-
             setIsLoading(false)
             window.location.pathname = "/event/lesson/comecando-no-reactjs-em-2022"
             return
@@ -45,7 +44,7 @@ export const Home = () => {
     async function onRegister(event: FormEvent) {
         event.preventDefault()
         setIsLoading(true)
-        const res = await registerOn({
+        registerOn({
             variables: {
                 email,
                 name
@@ -65,6 +64,8 @@ export const Home = () => {
             return
         })
     }
+    
+
 
     return (
         <div className="flex flex-col items-center relative h-full lg:p-20 w-full bg-blur bg-cover bg-no-repeat">

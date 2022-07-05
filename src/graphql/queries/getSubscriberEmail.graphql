@@ -1,0 +1,8 @@
+query getSubscribeEmail($email: String!) {
+  subscriber(where: {email: $email}) {
+    id
+    name
+    email
+    avatar
+  }
+}

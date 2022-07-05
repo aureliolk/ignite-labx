@@ -1,6 +1,6 @@
 import { DiscordLogo, DotsThreeOutlineVertical, Lightning, Pencil, Spinner, TelegramLogo, Trash, UserCircle } from "phosphor-react";
 import { Player, DefaultUi, Youtube } from "@vime/react";
-import { useCreatCommentMutation, useDeleteCommentMutation, useGetLessonDataQuery, useUpdateCommentMutation } from "../graphql/generated";
+import {  useCreateCommentMutation, useCreateSubscribeMutation, useDeleteCommentMutation, useGetLessonDataQuery, useGetSubscribeEmailLazyQuery, useUpdateCommentMutation } from "../graphql/generated";
 import "@vime/core/themes/default.css"
 import { FormEvent, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
@@ -9,7 +9,6 @@ import ptBR from "date-fns/locale/pt-BR"
 import { Material } from "./Material";
 import classNames from "classnames";
 
-
 type SlugDataProps = {
     lessonSlug: string | undefined
 }
@@ -17,14 +16,20 @@ type SlugDataProps = {
 export const Lesson = (props: SlugDataProps) => {
     const [loading, setIsloading] = useState(false)
     const { user } = useContext(AuthContext)
+
     const [id, setId] = useState("")
+    const [userId, setUserId] = useState("")
+    
     const [comment, setCommet] = useState("")
-    const [button, sentButton] = useState(false)
     const [commentOption, setCommentOption] = useState(false)
+    
     const [edit, setEdit] = useState(false)
     const [editComment, setEditComment] = useState("")
-    const [dateEdit, setDateEdit] = useState("")
-    const [createComment] = useCreatCommentMutation()
+
+    const[createSubscribe] = useCreateSubscribeMutation()
+    const [getSubscriberEmail] = useGetSubscribeEmailLazyQuery()
+    const [creatComment] = useCreateCommentMutation()
+
     const [updateComment] = useUpdateCommentMutation()
     const [deleteComment] = useDeleteCommentMutation()
 
@@ -52,34 +57,59 @@ export const Lesson = (props: SlugDataProps) => {
             slug: props.lessonSlug
         }
     })
+    
+    useEffect(()=>{
+        getSubscriberEmail({
+            variables: {
+                email: user?.user_metadata?.email || user?.email as string
+            } 
+        }).then(res=>{
+            if(!user){
+                return
+            }
+            if(res.data?.subscriber === null){  
+                createSubscribe({
+                    variables:{
+                        email: user.user_metadata?.email as string,
+                        name: user.user_metadata?.name as string,
+                        avatar: user.user_metadata?.avatar_url
+                    }
+                }).then(res=>{
+                    if(!res.data){
+                        return
+                    }
+                    const cherUser = setTimeout(() => {
+                        if(!userId){
+                            setUserId(res.data?.createSubscriber?.id as string)
+                        }
+                        clearTimeout(cherUser)
+                    }, 3000);
+                    setUserId(res.data?.createSubscriber?.id as string)
+                    return
+                })
+                return
+            }
+            setUserId(res.data?.subscriber?.id as string)
+        })        
+    },[userId])
 
-    console.log(data)
-
-    useEffect(() => {
-        if (comment.length > 0) {
-            sentButton(true)
-        } else if (comment.length <= 0) {
-            sentButton(false)
-        }
-    }, [comment])
 
 
-    async function sendComment(e: FormEvent) {
+    async function CreateComment(e: FormEvent) {
         e.preventDefault()
         setIsloading(true)
-        createComment({
-            variables: {
-                slug: props.lessonSlug,
-                avatar: user?.user_metadata?.avatar_url,
-                user: user?.user_metadata?.name || user?.name,
-                comment
-            }
-        }).then(() => {
-            setIsloading(false)
-            refetch({ slug: props.lessonSlug })
-            setCommet("")
-
-        })
+            creatComment({
+                variables: {
+                    slug: props.lessonSlug,
+                    comment,
+                    id: userId
+                }
+            }).then(() => {
+                setIsloading(false)
+                refetch()
+                setCommet("")
+            })
+        
     }
 
     async function UpdateComment(e: FormEvent) {
@@ -91,11 +121,10 @@ export const Lesson = (props: SlugDataProps) => {
                 id,
                 comment: editComment
             }
-        }).then((res) => {
+        }).then(() => {
             refetch()
             setIsloading(false)
             setEdit(false)
-            setDateEdit(res.data?.updateFeedback?.updatedAt)
         })
     }
 
@@ -159,9 +188,9 @@ export const Lesson = (props: SlugDataProps) => {
                 <strong className="text-2xl font-bold leading-snug">Comentarios</strong>
                 <div className="flex items-center">
                     <span className="mr-2">{user?.user_metadata?.avatar_url ? <img src={user.user_metadata.avatar_url} className="w-[32px] rounded-full" /> : <UserCircle size={35} />}</span>
-                    <form id="feedback" onSubmit={sendComment} className="w-full flex">
-                        <input placeholder="Digite aqui seu comentario" type="text" onChange={(e) => { setCommet(e.target.value) }} value={comment} className={classNames("flex-1 text-lg lg:text-sm bg-transparent border-0 border-b border-gray-500 outline-none  px-4 h-10", { "bg-gray-700 border-none rounded": button === true })} />
-                        {button && <button className="w-12 h-10 p-2 bg-green-500 rounded rounded-l-none flex items-center justify-center text-2xl">{loading && !edit ? <Spinner className="animate-spin" /> : <TelegramLogo className="text-gray-40 hover:text-[30px] hover:text-gray-200 transition-all" />}</button>}
+                    <form id="feedback" onSubmit={CreateComment} className="w-full flex">
+                        <input placeholder="Digite aqui seu comentario" type="text" onChange={(e) => { setCommet(e.target.value) }} value={comment} className={classNames("flex-1 text-lg lg:text-sm bg-transparent border-0 border-b border-gray-500 outline-none  px-4 h-10", { "bg-gray-700 border-none rounded": comment.length > 0 })} />
+                        {comment.length > 0 && <button className="w-12 h-10 p-2 bg-green-500 rounded rounded-l-none flex items-center justify-center text-2xl">{loading && !edit ? <Spinner className="animate-spin" /> : <TelegramLogo className="text-gray-40 hover:text-[30px] hover:text-gray-200 transition-all" />}</button>}
                     </form>
                 </div>
                 <div className="w-full  max-h-[473px] overflow-y-scroll scrollbar scrollbar-thumb-green-500">
@@ -173,10 +202,10 @@ export const Lesson = (props: SlugDataProps) => {
                                         <form onSubmit={UpdateComment}>
                                             <div className="flex items-center gap-2 mt-4 py-2 relative">
                                                 <div className="inline-block">
-                                                    {comment.authorAvatar ? <img className="w-[35px] h-[35px] rounded-full" src={comment.authorAvatar} alt={`Imagem de ${comment.autor}`} /> : <UserCircle size={35} />}
+                                                    {comment.subscriber?.avatar ? <img className="w-[35px] h-[35px] rounded-full" src={comment.subscriber.avatar} alt={`Imagem de ${comment.subscriber.name}`} /> : <UserCircle size={35} />}
                                                 </div>
                                                 <div className="w-full">
-                                                    <div className="flex text-xs items-center gap-2"><strong className="text-sm text-gray-50">{comment.autor}</strong>
+                                                    <div className="flex text-xs items-center gap-2"><strong className="text-sm text-gray-50">{comment.subscriber?.name}</strong>
                                                         {comment.createdAt !== comment.updatedAt ? (
                                                             <span>Editado há {formatDistanceToNowStrict(
                                                                 new Date(year(comment.updatedAt), month(comment.updatedAt) - 1, day(comment.updatedAt), hour(comment.updatedAt), min(comment.updatedAt), sec(comment.updatedAt)), {
@@ -208,12 +237,12 @@ export const Lesson = (props: SlugDataProps) => {
 
                                     </>
                                 ) : (
-                                    <div className="flex items-center gap-2 mt-4 py-2 relative">
+                                    <div className="flex items-center gap-2 mt-4 py-2 relative  mr-4">
                                         <div className="inline-block">
-                                            {comment.authorAvatar ? <img className="w-[35px] h-[35px] rounded-full" src={comment.authorAvatar} alt={`Imagem de ${comment.autor}`} /> : <UserCircle size={35} />}
+                                            {comment.subscriber?.avatar ? <img className="w-[35px] h-[35px] rounded-full" src={comment.subscriber.avatar} alt={`Imagem de ${comment.subscriber.name}`} /> : <UserCircle size={35} />}
                                         </div>
                                         <div >
-                                            <div className="flex text-xs items-center gap-2"><strong className="text-sm text-gray-50">{comment.autor}</strong>
+                                            <div className="flex text-xs items-center gap-2"><strong className="text-sm text-gray-50">{comment.subscriber?.name}</strong>
                                                 {comment.createdAt !== comment.updatedAt ? (
                                                     <span>Editado há {formatDistanceToNowStrict(
                                                         new Date(year(comment.updatedAt), month(comment.updatedAt) - 1, day(comment.updatedAt), hour(comment.updatedAt), min(comment.updatedAt), sec(comment.updatedAt)), {
@@ -230,16 +259,18 @@ export const Lesson = (props: SlugDataProps) => {
                                                     </span>
                                                 )}
                                             </div>
-                                            <p className="text-lage lg:text-sm">{comment.authorComment}</p>
+                                            <p className="text-lage lg:text-sm">{comment.feedbacks}</p>
                                         </div>
-                                        <button onClick={() => { setCommentOption(true), setId(comment.id) }} className="absolute right-0 hidden group-hover:block cursor-pointer">
-                                            <DotsThreeOutlineVertical className="text-gray-100" weight="fill" />
-                                        </button>
+                                        {userId === comment.subscriber?.id && (
+                                            <button onClick={() => { setCommentOption(true), setId(comment.id) }} className="absolute right-0 hidden group-hover:block cursor-pointer">
+                                                <DotsThreeOutlineVertical className="text-gray-100" weight="fill" />
+                                            </button>
+                                        )}
                                     </div>
                                 )}
                                 {commentOption && comment.id === id &&
-                                    <div className="inline-flex flex-col float-right text-sm gap-1 w-20 border  border-gray-500 group" onMouseLeave={() => { !loading && setCommentOption(false) }}>
-                                        <button onClick={() => {setCommentOption(false), setEdit(true), setEditComment(comment.authorComment as string) }} className="bg-transparent hover:bg-gray-700 w-full p-2 flex items-center justify-between"><Pencil size={18} /><span>Editar</span></button>
+                                    <div className="inline-flex flex-col float-right text-sm gap-1 w-20 border  border-gray-500 group mr-4" onMouseLeave={() => { !loading && setCommentOption(false) }}>
+                                        <button onClick={() => { setCommentOption(false), setEdit(true), setEditComment(comment.feedbacks as string) }} className="bg-transparent hover:bg-gray-700 w-full p-2 flex items-center justify-between"><Pencil size={18} /><span>Editar</span></button>
                                         <button onClick={() => { DeleteComment() }} className="bg-transparent hover:bg-gray-700 w-full p-2 flex items-center justify-between">{loading && comment.id === id ? <Spinner className="animate-spin" /> : <><Trash size={18} /><span>Excluir</span></>}</button>
                                     </div>}
                             </div>

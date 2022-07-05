@@ -1,5 +1,5 @@
-mutation DeleteComment($id:ID) {
-  deleteFeedback(where: {id: $id}) {
+mutation deleteComment($id:ID) {
+  deleteFeedback(where: {id: $id}){
     id
   }
 }

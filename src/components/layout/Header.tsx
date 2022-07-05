@@ -7,7 +7,6 @@ import RocketSeatLabv1 from "../../assets/RocketSeatLabv1.png"
 
 export const Header = () => {
     const { user, signin, menu, SignOut, showMenu } = useContext(AuthContext)
-
     return (
         <>
             {!signin ? (

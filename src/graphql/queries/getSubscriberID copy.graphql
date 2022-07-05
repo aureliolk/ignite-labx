@@ -1,0 +1,8 @@
+query getSubscribeID($id: ID) {
+  subscriber(where: {id: $id}) {
+    id
+    name
+    email
+    avatar
+  }
+}

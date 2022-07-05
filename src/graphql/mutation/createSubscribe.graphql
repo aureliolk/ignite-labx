@@ -1,0 +1,8 @@
+mutation createSubscribe($name:String!, $email:String!, $avatar:String) {
+  createSubscriber(data: {name: $name, email: $email, avatar: $avatar}){
+    id
+    name
+    email
+    avatar
+  }
+}

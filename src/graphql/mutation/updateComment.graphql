@@ -1,6 +1,5 @@
-mutation UpdateComment($comment: String, $id: ID) {
-  updateFeedback(data: {authorComment: $comment}, where: {id: $id}) {
+mutation updateComment($comment:String,$id:ID) {
+  updateFeedback(data: {feedbacks: $comment}, where: {id: $id}){
     id
-    updatedAt
   }
 }

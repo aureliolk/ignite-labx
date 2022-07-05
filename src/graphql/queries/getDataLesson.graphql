@@ -10,11 +10,14 @@ query GetLessonData($slug: String) {
     }
   }
   feedbacks(where: {lesson: {slug: $slug}}, orderBy: createdAt_DESC) {
-    authorAvatar
-    authorComment
-    autor
     id
     createdAt
     updatedAt
+    feedbacks
+    subscriber {
+      id
+      name
+      avatar
+    }
   }
 }
