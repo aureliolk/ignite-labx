@@ -45,14 +45,14 @@ A ideia do para esse projeto é disponibilizar uma plataforma de conteúdos em v
 1. Faça um clone do repositório:
 
 ```sh
-  $ git remote add origin git@github.com:aleksanderpalamar/App-Ignite-Lab.git
+  $ git clone https://github.com/aureliolk/ignite-labx.git
 ```
 
 2. Executando a Aplicação:
 
 ```sh
   # Aplicação web
-  $ cd App-Ignite-Lab
+  $ cd ignite-labx
   # Instalando as dependências do projeto.
   $ yarn # ou npm install
   # Inicie a aplicação web
