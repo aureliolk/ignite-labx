@@ -1,11 +1,11 @@
 <div align="center">
-    <img src=".github/ignitelab-preview.png" height="512px"/>         
+    <img src="https://acos-labx.vercel.app/homeAcosLab.png" height="512px"/>         
 </div>
 
     
 <a href="https://acos-services.vercel.app">   
   <p align="center">
-  <img alt="Image da Home do Projeto Acos Lab" src="https://acos-labx.vercel.app/developedGitAureliolk.svg">
+  <img alt="Image da Home do Projeto Acos Lab" src="https://acos-labx.vercel.app/developedAureliolk.svg">
   </p>
 </a>
 
@@ -64,9 +64,9 @@ A ideia do para esse projeto é disponibilizar uma plataforma de conteúdos em v
 
 <p align="center">Minha redes sociais !</p>
 <p align="center" >
-<a href="#">
+<a href="https://www.linkedin.com/in/aureliolk/">
     <img src="https://acos-labx.vercel.app/developerLikedinAureliolk.svg" />
 </a>
-<a href="#">
+<a href="https://instagram.com/aureliolk">
     <img src="https://acos-labx.vercel.app/developerInstagramAureliolk.svg" />
 </a></p>
